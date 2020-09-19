@@ -1,7 +1,6 @@
 # Advanced Lane Finding
 
 ## **Overview**
----
 Lane finding is an essential function that an autonomous car must have to safely navigate streets. As a fundamental component to building autonomous vehicles, lane finding must be highly accurate and robust to variable road surfaces, lighting conditions, and road curvatures. This project explores advanced computer vision techniques to build a more robust lane finding pipeline. These techniques include exploring color spaces other than RGB, camera calibration, and perspective transforms. 
 
 The steps taken to build the lane finding pipeline are the following:
@@ -24,7 +23,6 @@ The steps taken to build the lane finding pipeline are the following:
 [output]: ./examples/output.png "Output Image"
 
 ## **Methodology**
----
 ### 1. Camera Calibration
 The first step to accurately labeling lane lines is correcting for camera lens distortion. We can do this by taking multiple pictures of a chessboard from different angles and distances. OpenCV has a built in function for detecting chessboard corners and another function to calibrate the camera based on the detected corners. The below function reads in 19 chessboard images, locates the chessboard corners, calibrates the camera, and returns camera matrix and distortion coefficients needed to undistort an image from this camera. 
 ```
@@ -170,13 +168,11 @@ Finally we can visualize the lane lane finding pipeline by projecting the polyno
 ![alt text][output]
 
 ## **Pipeline**
----
 The lane finding pipeline can be applied to a video to demonstrate how it would perform in a live autonomous vehicle. The link below is a video output from the lane finding pipeline with lane lanes superimposed on the images. It can be seen that this pipeline performs reasonably well on a relatively simple highway driving example.
 
 [Pipeline_Video](test_videos/project_output.mp4)
 
 ## **Discussion**
----
 This pipeline is far from a complete lane detection system as it will begin to break down on tightly turning roads or roads with overpasses and tunnels. Below are a few thoughts for improvements to the pipeline to increase accuracy and robustness.
 
 1. Further refinement of color and gradient thresholding. This pipeline will struggle to find lane lines when very dark and large shadows are cast on the road, such as overpass. Better color and gradient thresholding would help isolate lane lines in these situations. Similarly, mixed road surfaces like the adjacent concrete and asphalt road surfaces also become a challenge for this pipeline. Better selecting for the white and yellow lane lines would help push concrete-asphalt edges to the background.
